@@ -24,7 +24,7 @@ understand agent architecture
 | Personal agent operating layer | [digital-twin](https://github.com/stevenchouai/digital-twin) | File-first blueprint for making agents inherit identity, style, memory, and reusable workflows instead of answering one-off prompts. |
 | Agent ROI evaluation | [agent-scorecard](https://github.com/stevenchouai/agent-scorecard) | Trace-first scoring harness for deciding whether an agent deserves more tokens, permissions, and trust. |
 | Knowledge runtime | knowledge-harness *(local hardening before public release)* | External execution layer for routing Codex-style runs through an Obsidian knowledge base without mixing content and runtime state. |
-| Public proof control plane | [personalWebsite](https://github.com/stevenchouai/personalWebsite) | Next.js + MDX site that connects repositories, writing, demos, RSS, and Obsidian-to-site publishing into one engineering narrative. |
+| Public proof control plane | [stevenchouai.github.io](https://stevenchouai.github.io) | Public site that connects repositories, writing, demos, RSS, and Obsidian-to-site publishing into one engineering narrative. |
 
 ## Featured Builds
 
@@ -42,8 +42,8 @@ understand agent architecture
 
 ### Career and communication systems
 
-- **[resume](https://github.com/stevenchouai/resume)** — dual-track PM / Engineer resume system with local JD matching, AI tailoring workflow, ATS review, and reproducible PDF output.
-- **[manage-up](https://github.com/stevenchouai/manage-up)** — MCP server + skill library for turning workplace reporting into concrete, data-anchored manager communication.
+- **Resume system** *(local proof, public writeup pending)* — dual-track PM / Engineer resume workflow with local JD matching, AI tailoring, ATS review, and reproducible PDF output.
+- **ManageUp** *(repo visibility pending)* — MCP server + skill library for turning workplace reporting into concrete, data-anchored manager communication.
 
 ## How I Build
 
