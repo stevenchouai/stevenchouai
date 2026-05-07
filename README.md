@@ -23,7 +23,7 @@ understand agent architecture
 | Agent architecture research | [claude-code-sourcemap](https://github.com/stevenchouai/claude-code-sourcemap) | Reconstructed and explained Claude Code architecture from public sourcemap evidence; turned runtime internals into an AI coding agent tutorial. |
 | Personal agent operating layer | [digital-twin](https://github.com/stevenchouai/digital-twin) | File-first blueprint for making agents inherit identity, style, memory, and reusable workflows instead of answering one-off prompts. |
 | Agent ROI evaluation | [agent-scorecard](https://github.com/stevenchouai/agent-scorecard) | Trace-first scoring harness for deciding whether an agent deserves more tokens, permissions, and trust. |
-| Knowledge runtime | [knowledge-harness](https://github.com/stevenchouai/knowledge-harness) | External execution layer for routing Codex-style runs through an Obsidian knowledge base without mixing content and runtime state. |
+| Knowledge runtime | knowledge-harness *(local hardening before public release)* | External execution layer for routing Codex-style runs through an Obsidian knowledge base without mixing content and runtime state. |
 | Public proof control plane | [personalWebsite](https://github.com/stevenchouai/personalWebsite) | Next.js + MDX site that connects repositories, writing, demos, RSS, and Obsidian-to-site publishing into one engineering narrative. |
 
 ## Featured Builds
@@ -37,7 +37,7 @@ understand agent architecture
 ### Personal AI infrastructure
 
 - **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — a personal agent operating layer built around explicit files, skills, memory, and durable outputs.
-- **[knowledge-harness](https://github.com/stevenchouai/knowledge-harness)** — CLI/runtime wrapper around an Obsidian LLM wiki.
+- **knowledge-harness** *(local hardening before public release)* — CLI/runtime wrapper around an Obsidian LLM wiki.
 - **Input Copilot iOS** — local-first capture → profile signals → personal radar → Obsidian export loop.
 
 ### Career and communication systems
