@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/profile-hero.svg" alt="Steven Chou — AI agent systems, evals, and knowledge infrastructure" width="100%">
+</p>
+
 # Steven Chou
 
 **AI builder working on agent systems, personal knowledge infrastructure, and proof-driven engineering.**
@@ -5,6 +9,10 @@
 I build systems that turn vague AI ambition into inspectable artifacts: source-code research, agent runtime fixes, evaluation harnesses, Obsidian-backed memory, and public proof chains.
 
 ## Builder Thesis
+
+<p align="center">
+  <img src="assets/proof-chain-map.svg" alt="Steven Chou current proof chain map" width="100%">
+</p>
 
 Most AI demos stop at the prompt. My work tries to close the loop:
 

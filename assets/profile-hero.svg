@@ -1,0 +1,47 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">Steven Chou GitHub profile hero</title>
+<desc id="desc">A dark technical diagram for Steven Chou's AI agent engineering work.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#020617"/><stop offset="0.5" stop-color="#0f172a"/><stop offset="1" stop-color="#111827"/></linearGradient>
+  <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22d3ee"/><stop offset="1" stop-color="#818cf8"/></linearGradient>
+  <linearGradient id="green" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#34d399"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+  <filter id="glow"><feGaussianBlur stdDeviation="4" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="1" opacity="0.65"/></pattern>
+  <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 Z" fill="#67e8f9"/></marker>
+</defs>
+<rect width="1200" height="520" rx="28" fill="url(#bg)"/>
+<rect width="1200" height="520" rx="28" fill="url(#grid)" opacity="0.8"/>
+
+<circle cx="1020" cy="80" r="170" fill="#0ea5e9" opacity="0.08"/>
+<circle cx="1030" cy="420" r="220" fill="#8b5cf6" opacity="0.08"/>
+<text x="64" y="92" fill="#67e8f9" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" letter-spacing="3">AI AGENT SYSTEMS · EVALS · KNOWLEDGE INFRA</text>
+<text x="64" y="158" fill="#f8fafc" font-family="Inter, ui-sans-serif, system-ui" font-size="58" font-weight="800">Steven Chou</text>
+<text x="64" y="210" fill="#cbd5e1" font-family="Inter, ui-sans-serif, system-ui" font-size="28">Building the proof chain for practical agent engineering.</text>
+<text x="64" y="258" fill="#94a3b8" font-family="Inter, ui-sans-serif, system-ui" font-size="20">Runtime debugging · tool-use discipline · memory routing · token ROI · public artifacts</text>
+<g transform="translate(64 326)">
+  <rect width="238" height="74" rx="18" fill="#082f49" stroke="#22d3ee" stroke-width="1.5"/>
+  <text x="24" y="31" fill="#e0f2fe" font-family="ui-monospace, monospace" font-size="14">01 / reverse engineer</text>
+  <text x="24" y="54" fill="#7dd3fc" font-family="Inter, sans-serif" font-size="15">claude-code-sourcemap</text>
+</g>
+<path d="M318 363 H390" stroke="#67e8f9" stroke-width="2" marker-end="url(#arrow)"/>
+<g transform="translate(410 326)">
+  <rect width="210" height="74" rx="18" fill="#052e2b" stroke="#34d399" stroke-width="1.5"/>
+  <text x="24" y="31" fill="#dcfce7" font-family="ui-monospace, monospace" font-size="14">02 / operate</text>
+  <text x="24" y="54" fill="#86efac" font-family="Inter, sans-serif" font-size="15">digital twin</text>
+</g>
+<path d="M636 363 H708" stroke="#67e8f9" stroke-width="2" marker-end="url(#arrow)"/>
+<g transform="translate(728 326)">
+  <rect width="210" height="74" rx="18" fill="#3b1b55" stroke="#a78bfa" stroke-width="1.5"/>
+  <text x="24" y="31" fill="#f3e8ff" font-family="ui-monospace, monospace" font-size="14">03 / evaluate</text>
+  <text x="24" y="54" fill="#c4b5fd" font-family="Inter, sans-serif" font-size="15">agent scorecard</text>
+</g>
+<path d="M954 363 H1026" stroke="#67e8f9" stroke-width="2" marker-end="url(#arrow)"/>
+<g transform="translate(1046 326)">
+  <rect width="100" height="74" rx="18" fill="#451a03" stroke="#fbbf24" stroke-width="1.5"/>
+  <text x="50" y="31" fill="#fef3c7" font-family="ui-monospace, monospace" font-size="14" text-anchor="middle">ship</text>
+  <text x="50" y="54" fill="#fde68a" font-family="Inter, sans-serif" font-size="15" text-anchor="middle">proof</text>
+</g>
+<g filter="url(#glow)"><circle cx="72" cy="462" r="6" fill="#22d3ee"/><circle cx="92" cy="462" r="6" fill="#34d399"/><circle cx="112" cy="462" r="6" fill="#a78bfa"/></g>
+<text x="136" y="468" fill="#cbd5e1" font-family="ui-monospace, monospace" font-size="17">agent work should leave logs, tests, reports, diagrams, and shipped artifacts</text>
+<text x="1166" y="492" fill="#64748b" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="15" text-anchor="end">stevenchouai · trace over vibes</text>
+</svg>
