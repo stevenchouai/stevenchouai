@@ -6,7 +6,18 @@
 
 **I build Personal AI Operating Systems: memory → agents → evaluation → public proof.**
 
-My work is not a shelf of unrelated repositories. It is one compounding system: capture high-signal inputs, encode identity and judgment, run agents through real tools, evaluate whether they earned trust, and publish the proof chain.
+If you are deciding whether to follow or work with me, the short version is:
+
+> I turn AI-agent ideas into inspectable systems: captured knowledge, explicit identity, real tool use, eval gates, and public proof that compounds over time.
+
+## Why Stay Here
+
+| Visitor question | What this profile should prove |
+|---|---|
+| **Can he build?** | Public repos, working demos, diagrams, tests, and writeups instead of claims. |
+| **Does he understand agents deeply?** | Agent architecture research, runtime plumbing, and trace-first evaluation. |
+| **Is there a coherent direction?** | Every project rolls up into one Personal AI OS thesis, not random side projects. |
+| **Should I follow?** | Follow if you care about AI agents becoming reliable personal/work infrastructure, not just chat UI demos. |
 
 ## The Shape of the Work
 
@@ -27,14 +38,14 @@ body:    Steven as one inspectable AI-native builder entity
   <img src="assets/stevenos-stack.svg" alt="StevenOS repository stack" width="100%">
 </p>
 
-| Layer | Repository / Surface | Role in the system |
-|---|---|---|
-| Memory | knowledge-harness *(local hardening before public release)* | Routes agents through an Obsidian-backed knowledge base without mixing content and runtime state. |
-| Identity | [digital-twin](https://github.com/stevenchouai/digital-twin) | File-first operating layer for making agents inherit style, judgment, memory, and reusable workflows. |
-| Agent runtime | Hermes / OpenClaw contributions | Real assistant plumbing: messaging, Feishu threads, gateway/runtime debugging, OAuth, CLI backends, tools. |
-| Model + tool infra | CLIProxyAPI *(public surface pending cleanup)* | Normalizes model access and CLI-compatible API infrastructure. |
-| Evaluation | [agent-scorecard](https://github.com/stevenchouai/agent-scorecard) | Trace-first quality gate for deciding whether agents deserve more tokens, permissions, and autonomy. |
-| Public proof | [stevenchouai.github.io](https://stevenchouai.github.io) · resume system | Converts repos, essays, demos, and job-market artifacts into one navigable proof chain. |
+| Layer | Repository / Surface | Role in the system | Public conversion asset |
+|---|---|---|---|
+| Memory | knowledge-harness *(local hardening before public release)* | Routes agents through an Obsidian-backed knowledge base without mixing content and runtime state. | Architecture note + public-safe demo pending. |
+| Identity | [digital-twin](https://github.com/stevenchouai/digital-twin) | File-first operating layer for making agents inherit style, judgment, memory, and reusable workflows. | README, docs site, operating-layer essay. |
+| Agent runtime | Hermes / OpenClaw contributions | Real assistant plumbing: messaging, Feishu threads, gateway/runtime debugging, OAuth, CLI backends, tools. | Issue/PR writeups and debugging notes pending. |
+| Model + tool infra | CLIProxyAPI *(public surface pending cleanup)* | Normalizes model access and CLI-compatible API infrastructure. | Cleanup checklist + launch note pending. |
+| Evaluation | [agent-scorecard](https://github.com/stevenchouai/agent-scorecard) | Trace-first quality gate for deciding whether agents deserve more tokens, permissions, and autonomy. | Runnable examples + reports. |
+| Public proof | [stevenchouai.github.io](https://stevenchouai.github.io) · resume system | Converts repos, essays, demos, and job-market artifacts into one navigable proof chain. | Homepage, blog, proof-chain page. |
 
 ## Featured Proof
 
@@ -55,6 +66,27 @@ body:    Steven as one inspectable AI-native builder entity
 - **Resume system** *(public writeup pending)* — dual-track PM / Engineer resume workflow with local JD matching, AI tailoring, ATS review, and reproducible PDF output.
 - **ManageUp** *(archive / visibility pending)* — MCP server + skill library for manager-facing reporting.
 
+## Follower Growth Loop
+
+I do **not** expect followers to come from a prettier README alone. The loop has to be:
+
+1. **Build useful primitives** — agent memory, identity, runtime, eval, and proof-chain tools.
+2. **Publish one concrete artifact per week** — a repo improvement, demo, architecture note, benchmark, debugging case, or before/after workflow.
+3. **Package each artifact into a small distribution unit** — GitHub README update + blog note + X/LinkedIn thread + one clear screenshot/diagram.
+4. **Route readers back to the proof chain** — every post should answer: “what can I inspect or reuse now?”
+5. **Measure retention signals** — stars, follows, profile clicks, repo clones, comments, inbound DMs, and which pages cause people to continue reading.
+
+## 30-Day Public Build Plan
+
+| Week | Ship | Why it should help conversion |
+|---|---|---|
+| 1 | Add clear visitor CTA, proof map, and follower thesis to this profile. | People understand the category and why to follow within 10 seconds. |
+| 2 | Harden one local proof repo into a public artifact or public writeup. | Converts “interesting private system” into inspectable evidence. |
+| 3 | Publish one agent-eval case study using Agent Scorecard. | Shows judgment: not just building agents, but deciding when they deserve trust. |
+| 4 | Turn one runtime/debugging win into a practical architecture note. | Attracts expert builders who follow for hard-earned implementation detail. |
+
+Success metric: each shipped artifact should create a visible next click — repo → demo/report → essay → follow/contact. If it cannot create a next click, it is probably internal value, not public conversion value yet.
+
 ## Operating Principles
 
 - **Trace over vibes** — logs, tests, files, reports, screenshots, and commits beat confident claims.
@@ -69,8 +101,8 @@ body:    Steven as one inspectable AI-native builder entity
 - [AI reshapes engineering SDLC](https://stevenchouai.github.io/blog/ai-reshapes-engineering-sdlc)
 - [Public proof chain](https://stevenchouai.github.io/proof-chain)
 
-## Links
+## Follow / Contact
 
 - Website: [stevenchouai.github.io](https://stevenchouai.github.io)
 - GitHub: [github.com/stevenchouai](https://github.com/stevenchouai)
-- Focus: AI agents · evaluation · knowledge systems · product engineering
+- Follow for: AI agents · evaluation · personal knowledge systems · product engineering · public proof chains
