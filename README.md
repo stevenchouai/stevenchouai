@@ -55,6 +55,14 @@ body:    Steven as one inspectable AI-native builder entity
 - **[Claude Code Sourcemap](https://github.com/stevenchouai/claude-code-sourcemap)** — source-map-based architecture guide for AI coding agents.
 - **Hermes / OpenClaw work** — practical runtime and gateway fixes across real assistant stacks, not toy demos.
 
+## Open Source Contributions
+
+| Project | Contribution | Status | Why it matters |
+|---|---|---|---|
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#21254](https://github.com/NousResearch/hermes-agent/pull/21254) — `fix(update): migrate config in non-interactive updates` *(salvaged from my original #19221)* | **Merged** · merge commit `8cef149` | Makes detached / gateway / non-interactive update flows safer by migrating config before restart. |
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#17895](https://github.com/NousResearch/hermes-agent/pull/17895) — `fix(feishu): preserve threaded replies` | **Open** | Preserves Feishu/Lark threaded reply routing for real agent gateway conversations. |
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | [#75024](https://github.com/openclaw/openclaw/pull/75024) — `fix(feishu): preserve threads without root_id` | **Open** · CI green-ish | Handles Feishu/Lark thread fallback behavior in another production-style agent runtime. |
+
 ### Personal AI infrastructure
 
 - **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — a personal agent operating layer built around explicit files, skills, memory, and durable outputs.
