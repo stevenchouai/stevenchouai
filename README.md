@@ -16,6 +16,14 @@ If you are deciding whether to follow or work with me, the short version is:
 - **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — inspect the file-first workflow for giving personal agents reusable instructions, memory, and output habits.
 - **[Hermes agent PR #21254](https://github.com/NousResearch/hermes-agent/pull/21254)** — review the merged fix for safer non-interactive agent updates and the discussion behind it.
 
+## 60-second proof route
+
+If you only have a minute, click these in order:
+
+1. **[Agent Scorecard](https://github.com/stevenchouai/agent-scorecard)** — open the examples and reports. Verify that agent work is checked by files, tool calls, and final output, not just by a good-looking answer.
+2. **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — scan the README and docs. Verify that reusable agent behavior is written down in public files someone else can inspect.
+3. **[Hermes agent PR #21254](https://github.com/NousResearch/hermes-agent/pull/21254)** — read the merged PR and changed files. Verify that I can land a small reliability fix in a real assistant codebase.
+
 ## Why Stay Here
 
 | Visitor question | What this profile should prove |
