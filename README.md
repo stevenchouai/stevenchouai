@@ -10,6 +10,12 @@ If you are deciding whether to follow or work with me, the short version is:
 
 > I turn AI-agent ideas into inspectable systems: captured knowledge, explicit identity, real tool use, eval gates, and public proof that compounds over time.
 
+## Start here: three things you can inspect
+
+- **[Agent Scorecard](https://github.com/stevenchouai/agent-scorecard)** — run the examples and inspect the reports that check whether an agent used tools, verified its work, and left useful files behind.
+- **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — inspect the file-first workflow for giving personal agents reusable instructions, memory, and output habits.
+- **[Hermes agent PR #21254](https://github.com/NousResearch/hermes-agent/pull/21254)** — review the merged fix for safer non-interactive agent updates and the discussion behind it.
+
 ## Why Stay Here
 
 | Visitor question | What this profile should prove |
