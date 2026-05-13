@@ -64,7 +64,7 @@ body:    Steven as one inspectable AI-native builder entity
 
 | Layer | Repository / Surface | Role in the system | Public conversion asset |
 |---|---|---|---|
-| Memory | knowledge-harness *(local hardening before public release)* | Routes agents through an Obsidian-backed knowledge base without mixing content and runtime state. | Architecture note + public-safe demo pending. |
+| Memory | [knowledge-harness](https://github.com/stevenchouai/knowledge-harness) | Routes agents through an Obsidian-backed knowledge base without mixing content and runtime state. | Public-safe run receipts + redacted metadata PRs. |
 | Identity | [digital-twin](https://github.com/stevenchouai/digital-twin) | File-first operating layer for making agents inherit style, judgment, memory, and reusable workflows. | README, docs site, operating-layer essay. |
 | Agent runtime | Hermes / OpenClaw contributions | Real assistant plumbing: messaging, Feishu threads, gateway/runtime debugging, OAuth, CLI backends, tools. | Issue/PR writeups and debugging notes pending. |
 | Model + tool infra | CLIProxyAPI *(public surface pending cleanup)* | Normalizes model access and CLI-compatible API infrastructure. | Cleanup checklist + launch note pending. |
