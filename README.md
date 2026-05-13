@@ -24,6 +24,16 @@ If you only have a minute, click these in order:
 2. **[Digital Twin](https://github.com/stevenchouai/digital-twin)** — scan the README and docs. Verify that reusable agent behavior is written down in public files someone else can inspect.
 3. **[Hermes agent PR #21254](https://github.com/NousResearch/hermes-agent/pull/21254)** — read the merged PR and changed files. Verify that I can land a small reliability fix in a real assistant codebase.
 
+## Today's proof receipts
+
+On 2026-05-13 I used the same loop across three agent-system artifacts: ship a small inspectable change, verify it, then package the proof for review.
+
+| Artifact | Shipped proof | What it demonstrates |
+|---|---|---|
+| [knowledge-harness PR #8](https://github.com/stevenchouai/knowledge-harness/pull/8) | Opt-in run metadata path redaction for public-safe agent receipts. | A personal knowledge runtime can emit evidence without leaking local/private paths. |
+| [agent-scorecard PR #3](https://github.com/stevenchouai/agent-scorecard/pull/3) | Static delegation policy simulator + Markdown companion. | Agent quality scores should route autonomy decisions, not just produce a pretty grade. |
+| [digital-twin PR #14](https://github.com/stevenchouai/digital-twin/pull/14) | Agent Control Plane demo for auto-run / review / stop decisions. | Personal agents need explicit control surfaces before they deserve more permissions. |
+
 ## Why Stay Here
 
 | Visitor question | What this profile should prove |
