@@ -26,13 +26,35 @@ If you only have a minute, click these in order:
 
 ## Today's proof receipts
 
-On 2026-05-13 I used the same loop across three agent-system artifacts: ship a small inspectable change, verify it, then package the proof for review.
+On 2026-05-14 the autonomous builder loop shipped two new proof surfaces: an interactive scoring explainer for Agent Scorecard and a system architecture map for the public website.
+
+| Artifact | Shipped proof | What it demonstrates |
+|---|---|---|
+| [agent-scorecard PR #7](https://github.com/stevenchouai/agent-scorecard/pull/7) | Interactive 7-dimension scoring explainer with radar chart, pass/fail signals, and sample profiles. | The scoring system is inspectable — visitors can see exactly how tool use, verification, and safety are measured. |
+| [personalWebsite PR #28](https://github.com/stevenchouai/personalWebsite/pull/28) | `/proof-chain/system-map` — interactive 5-layer architecture diagram linking all StevenOS repos. | The entire Personal AI OS is one connected system, not a pile of unrelated projects. |
+
+<details>
+<summary>Previous receipts (2026-05-13)</summary>
 
 | Artifact | Shipped proof | What it demonstrates |
 |---|---|---|
 | [knowledge-harness PR #8](https://github.com/stevenchouai/knowledge-harness/pull/8) | Opt-in run metadata path redaction for public-safe agent receipts. | A personal knowledge runtime can emit evidence without leaking local/private paths. |
 | [agent-scorecard PR #3](https://github.com/stevenchouai/agent-scorecard/pull/3) | Static delegation policy simulator + Markdown companion. | Agent quality scores should route autonomy decisions, not just produce a pretty grade. |
 | [digital-twin PR #14](https://github.com/stevenchouai/digital-twin/pull/14) | Agent Control Plane demo for auto-run / review / stop decisions. | Personal agents need explicit control surfaces before they deserve more permissions. |
+
+</details>
+
+## Builder Velocity
+
+| Metric | Count |
+|---|---|
+| PRs this week | 37 |
+| Merged | 4 |
+| Open (pending review) | 33 |
+| Commits (7d) | 15+ |
+| Active repos | 4 |
+
+*Auto-updated daily via GitHub Action. Source: [scripts/update-proof-receipts.sh](scripts/update-proof-receipts.sh)*
 
 ## Why Stay Here
 
