@@ -9,8 +9,9 @@
       text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; fill: #e5e7eb; }
       .muted { fill: #94a3b8; font-size: 18px; }
       .tiny { fill: #94a3b8; font-size: 13px; }
+      .desc { fill: #94a3b8; font-size: 11px; }
       .title { fill: #f8fafc; font-size: 42px; font-weight: 800; letter-spacing: -1px; }
-      .section { fill: #f8fafc; font-size: 20px; font-weight: 700; }
+      .section { fill: #f8fafc; font-size: 18px; font-weight: 700; }
       .label { fill: #f8fafc; font-size: 16px; font-weight: 700; }
       .box { fill: #0f172a; stroke: #334155; stroke-width: 1.3; rx: 14; }
       .accent { stroke: #22d3ee; } .violet { stroke: #a78bfa; } .green { stroke: #34d399; } .amber { stroke: #fbbf24; } .rose { stroke: #fb7185; }
@@ -22,15 +23,15 @@
   <text x="62" y="106" class="muted">The repo system explains why each project exists and what it unlocks next.</text>
   <path d="M120 330 C260 180 420 440 560 300 S860 170 1040 330" fill="none" stroke="#22d3ee" stroke-width="3" opacity="0.9" marker-end="url(#arrow)"/>
   <rect x="90" y="260" width="170" height="122" class="box accent"/>
-  <text x="108" y="292" class="tiny">01</text><text x="108" y="320" class="label">Need durable memory</text><text x="108" y="346" class="tiny">knowledge-harness</text><text x="108" y="368" class="tiny">routes agents through knowledge</text>
+  <text x="108" y="292" class="tiny">01</text><text x="108" y="320" class="label">Need durable memory</text><text x="108" y="346" class="tiny">knowledge-harness</text><text x="108" y="368" class="desc">routes agents via KB</text>
   <rect x="315" y="360" width="170" height="122" class="box violet"/>
-  <text x="333" y="392" class="tiny">02</text><text x="333" y="420" class="label">Encode judgment</text><text x="333" y="446" class="tiny">digital-twin</text><text x="333" y="468" class="tiny">identity, style, reusable workflows</text>
+  <text x="333" y="392" class="tiny">02</text><text x="333" y="420" class="label">Encode judgment</text><text x="333" y="446" class="tiny">digital-twin</text><text x="333" y="468" class="desc">identity & style</text>
   <rect x="540" y="250" width="170" height="122" class="box green"/>
-  <text x="558" y="282" class="tiny">03</text><text x="558" y="310" class="label">Run real agents</text><text x="558" y="336" class="tiny">Hermes / OpenClaw</text><text x="558" y="358" class="tiny">messaging, tools, local devices</text>
+  <text x="558" y="282" class="tiny">03</text><text x="558" y="310" class="label">Run real agents</text><text x="558" y="336" class="tiny">Hermes / OpenClaw</text><text x="558" y="358" class="desc">msg + tools + devices</text>
   <rect x="765" y="360" width="170" height="122" class="box amber"/>
-  <text x="783" y="392" class="tiny">04</text><text x="783" y="420" class="label">Control model access</text><text x="783" y="446" class="tiny">CLIProxyAPI</text><text x="783" y="468" class="tiny">OAuth and model routing infrastructure</text>
+  <text x="783" y="392" class="tiny">04</text><text x="783" y="420" class="label">Control model access</text><text x="783" y="446" class="tiny">CLIProxyAPI</text><text x="783" y="468" class="desc">OAuth + model routing</text>
   <rect x="990" y="260" width="170" height="122" class="box rose"/>
-  <text x="1008" y="292" class="tiny">05</text><text x="1008" y="320" class="label">Earn more autonomy</text><text x="1008" y="346" class="tiny">agent-scorecard</text><text x="1008" y="368" class="tiny">trace-based eval for trust</text>
-  <rect x="302" y="510" width="596" height="58" rx="16" fill="#0f172a" stroke="#22d3ee" opacity="0.95"/>
-  <text x="332" y="546" class="section">Steven is the body: a public proof chain for AI-native building.</text>
+  <text x="1008" y="292" class="tiny">05</text><text x="1008" y="320" class="label">Earn more autonomy</text><text x="1008" y="346" class="tiny">agent-scorecard</text><text x="1008" y="368" class="desc">trace-based trust eval</text>
+  <rect x="240" y="510" width="720" height="58" rx="16" fill="#0f172a" stroke="#22d3ee" opacity="0.95"/>
+  <text x="280" y="546" class="section">Steven is the body: a public proof chain for AI-native building.</text>
 </svg>
