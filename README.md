@@ -67,14 +67,20 @@ On 2026-05-14 the autonomous builder loop shipped two new proof surfaces: an int
 
 ## The Shape of the Work
 
-<p align="center">
-  <img src="assets/proof-chain-map.svg" alt="From points to line to surface to body: StevenOS proof chain" width="100%">
-</p>
+Each project answers a specific question. Together they form one coherent system.
 
-```text
+| # | Question | Answer | Repository |
+|---|---|---|---|
+| 01 | Need durable memory? | Routes agents through an Obsidian-backed knowledge base. | knowledge-harness |
+| 02 | Encode judgment? | File-first identity, style, and reusable agent workflows. | [digital-twin](https://github.com/stevenchouai/digital-twin) |
+| 03 | Run real agents? | Messaging, tools, Feishu threads, local device control. | Hermes / OpenClaw |
+| 04 | Control model access? | OAuth, CLI routing, multi-provider API infrastructure. | CLIProxyAPI |
+| 05 | Earn more autonomy? | Trace-based evaluation for deciding when agents deserve trust. | [agent-scorecard](https://github.com/stevenchouai/agent-scorecard) |
+
+```
 point:   individual tools and experiments
 line:    memory → identity → agents → evals → proof
-surface: repos, writing, demos, resume, and operating loops reinforce each other
+surface: repos, writing, demos, resume reinforce each other
 body:    Steven as one inspectable AI-native builder entity
 ```
 
@@ -103,11 +109,19 @@ body:    Steven as one inspectable AI-native builder entity
 
 ## Open Source Contributions
 
-| Project | Contribution | Status | Why it matters |
-|---|---|---|---|
-| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#21254](https://github.com/NousResearch/hermes-agent/pull/21254) — `fix(update): migrate config in non-interactive updates` *(salvaged from my original #19221)* | **Merged** · merge commit `8cef149` | Makes detached / gateway / non-interactive update flows safer by migrating config before restart. |
-| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#17895](https://github.com/NousResearch/hermes-agent/pull/17895) — `fix(feishu): preserve threaded replies` | **Open** | Preserves Feishu/Lark threaded reply routing for real agent gateway conversations. |
-| [openclaw/openclaw](https://github.com/openclaw/openclaw) | [#75024](https://github.com/openclaw/openclaw/pull/75024) — `fix(feishu): preserve threads without root_id` | **Open** · CI green-ish | Handles Feishu/Lark thread fallback behavior in another production-style agent runtime. |
+**Merged**
+
+| Project | Contribution | What it fixes |
+|---|---|---|
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | [#76438](https://github.com/openclaw/openclaw/pull/76438) — `fix: run doctor --fix after gateway global package updates` | Auto-repairs gateway config after global package upgrades. |
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#21254](https://github.com/NousResearch/hermes-agent/pull/21254) — `fix(update): migrate config in non-interactive updates` | Makes detached / gateway / non-interactive update flows safer by migrating config before restart. |
+
+**Open**
+
+| Project | Contribution | What it fixes |
+|---|---|---|
+| [NousResearch/hermes-agent](https://github.com/NousResearch/hermes-agent) | [#17895](https://github.com/NousResearch/hermes-agent/pull/17895) — `fix(feishu): preserve threaded replies` | Preserves Feishu/Lark threaded reply routing for real agent gateway conversations. |
+| [openclaw/openclaw](https://github.com/openclaw/openclaw) | [#75024](https://github.com/openclaw/openclaw/pull/75024) — `fix(feishu): preserve threads without root_id` | Handles Feishu/Lark thread fallback behavior in another production-style agent runtime. |
 
 ### Personal AI infrastructure
 
