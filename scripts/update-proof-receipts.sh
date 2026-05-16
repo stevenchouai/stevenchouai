@@ -3,146 +3,143 @@
 # Queries GitHub API for recent PRs/commits across StevenOS repos and updates
 # the "Today's proof receipts" and "Builder Velocity" sections in README.md.
 #
-# Requirements: gh (authenticated), jq, bash 4+
-# Usage: GITHUB_TOKEN=... bash scripts/update-proof-receipts.sh
+# Requirements: gh (authenticated), bash 3.2+
+# Usage: bash scripts/update-proof-receipts.sh
 
 set -euo pipefail
 
 OWNER="stevenchouai"
 README="README.md"
-REPOS=(
-  "agent-scorecard"
-  "personalWebsite"
-  "digital-twin"
-  "knowledge-harness"
-)
+REPOS="agent-scorecard personalWebsite digital-twin knowledge-harness"
 
-# Collect PRs from last 7 days
+# Detect repo base path: CI clones to repos/, local uses ~/Projects/
+if [ -d "repos" ]; then
+  REPO_BASE="repos"
+else
+  REPO_BASE="$HOME/Projects"
+fi
+
 TODAY=$(date +%Y-%m-%d)
-WEEK_AGO=$(date -d "7 days ago" +%Y-%m-%d 2>/dev/null || date -v-7d +%Y-%m-%d 2>/dev/null || echo "")
+WEEK_AGO=$(date -v-7d +%Y-%m-%d 2>/dev/null || date -d "7 days ago" +%Y-%m-%d 2>/dev/null || echo "")
 
-declare -A REPO_PRS
-declare -A REPO_MERGED
-declare -A REPO_OPEN
 TOTAL_PRS=0
 TOTAL_MERGED=0
 TOTAL_OPEN=0
+TOTAL_COMMITS=0
+ALL_MERGED=""  # Collect all merged PRs across repos for receipt selection
 
-for repo in "${REPOS[@]}"; do
+for repo in $REPOS; do
   # Get recent PRs (merged + open)
   prs=$(gh pr list --repo "$OWNER/$repo" --state all --limit 20 \
     --json number,title,state,mergedAt,createdAt,url 2>/dev/null || echo "[]")
 
-  # Filter to last 7 days
-  recent=$(echo "$prs" | python3 -c "
+  # Filter to last 7 days and count
+  counts=$(echo "$prs" | python3 -c "
 import json, sys
 from datetime import datetime, timedelta
 prs = json.load(sys.stdin)
 cutoff = datetime.utcnow() - timedelta(days=7)
-recent = []
+merged = 0
+open_count = 0
+merged_lines = []
 for p in prs:
     created = p.get('createdAt', '')
     if created:
         try:
             dt = datetime.fromisoformat(created.replace('Z', '+00:00')).replace(tzinfo=None)
             if dt >= cutoff:
-                recent.append(p)
+                if p.get('mergedAt'):
+                    merged += 1
+                    merged_lines.append(f\"{p['number']}|{p['createdAt']}|{p['title']}|{p['url']}\")
+                elif p['state'].lower() == 'open':
+                    open_count += 1
         except: pass
-for p in recent:
-    merged = 'merged' if p.get('mergedAt') else p['state'].lower()
-    print(f\"{p['number']}|{merged}|{p['title']}|{p['url']}\")
-" 2>/dev/null || echo "")
+print(f'{merged}|{open_count}')
+for line in merged_lines:
+    print(line)
+" 2>/dev/null || echo "0|0")
 
-  merged_count=0
-  open_count=0
-  pr_lines=""
+  # Parse counts from first line
+  merged_count=$(echo "$counts" | head -1 | cut -d'|' -f1)
+  open_count=$(echo "$counts" | head -1 | cut -d'|' -f2)
+  TOTAL_MERGED=$((TOTAL_MERGED + merged_count))
+  TOTAL_OPEN=$((TOTAL_OPEN + open_count))
+  TOTAL_PRS=$((TOTAL_PRS + merged_count + open_count))
 
-  while IFS='|' read -r num state title url; do
-    [[ -z "$num" ]] && continue
-    if [[ "$state" == "merged" ]]; then
-      ((merged_count++)) || true
-      pr_lines+="| [$repo#$num]($url) | Merged | $title |"$'\n'
-    elif [[ "$state" == "open" ]]; then
-      ((open_count++)) || true
-      pr_lines+="| [$repo#$num]($url) | Open | $title |"$'\n'
-    fi
-  done <<< "$recent"
+  # Collect merged PR lines (skip the count line), prepend repo name
+  while IFS= read -r line; do
+    [[ -z "$line" ]] && continue
+    ALL_MERGED="${ALL_MERGED}${repo}|${line}"$'\n'
+  done < <(echo "$counts" | tail -n +2)
 
-  REPO_MERGED[$repo]=$merged_count
-  REPO_OPEN[$repo]=$open_count
-  REPO_PRS[$repo]="$pr_lines"
-  ((TOTAL_MERGED += merged_count)) || true
-  ((TOTAL_OPEN += open_count)) || true
-  ((TOTAL_PRS += merged_count + open_count)) || true
+  # Count commits in this repo (last 7 days)
+  count=$(git -C "$REPO_BASE/$repo" log --oneline --since="$WEEK_AGO" 2>/dev/null | wc -l | tr -d ' ')
+  TOTAL_COMMITS=$((TOTAL_COMMITS + count))
 done
 
-# Count commits across all repos (last 7 days)
-TOTAL_COMMITS=0
-for repo in "${REPOS[@]}"; do
-  count=$(git -C "$HOME/Projects/$repo" log --oneline --since="$WEEK_AGO" 2>/dev/null | wc -l | tr -d ' ')
-  ((TOTAL_COMMITS += count)) || true
-done
+ACTIVE_REPOS=$(echo "$REPOS" | wc -w | tr -d ' ')
 
-# Build proof receipts table (last 5 shipped items, newest first)
-RECEIPTS=""
-count=0
-for repo in agent-scorecard personalWebsite digital-twin knowledge-harness; do
-  while IFS='|' read -r num state title url; do
-    [[ -z "$num" ]] && continue
-    [[ $count -ge 5 ]] && break
-    RECEIPTS+="| [$repo#$num]($url) | $title | $(date +%Y-%m-%d) |"$'\n'
-    ((count++)) || true
-  done <<< "${REPO_PRS[$repo]}"
-  [[ $count -ge 5 ]] && break
-done
+# Pick top 5 most recent merged PRs across all repos
+RECEIPTS=$(echo "$ALL_MERGED" | { grep -v '^$' || true; } | sort -t'|' -k3 -r | head -5 | while IFS='|' read -r repo num created title url; do
+  [[ -z "$num" ]] && continue
+  echo "| [$repo#$num]($url) | $title | Shipped |"
+done)
 
 # Build velocity section
-VELOCITY="| Metric | Count |\n|---|---|\n"
-VELOCITY+="| PRs this week | $TOTAL_PRS |\n"
-VELOCITY+="| Merged | $TOTAL_MERGED |\n"
-VELOCITY+="| Open (pending review) | $TOTAL_OPEN |\n"
-VELOCITY+="| Commits (7d) | $TOTAL_COMMITS |\n"
-VELOCITY+="| Active repos | ${#REPOS[@]} |\n"
-VELOCITY+="\n*Last auto-update: $TODAY*\n"
+VELOCITY="| Metric | Count |
+|---|---|
+| PRs this week | $TOTAL_PRS |
+| Merged | $TOTAL_MERGED |
+| Open (pending review) | $TOTAL_OPEN |
+| Commits (7d) | $TOTAL_COMMITS |
+| Active repos | $ACTIVE_REPOS |
 
-# Replace sections in README
-python3 -c "
-import re, sys
+*Last auto-update: $TODAY*
+"
 
-readme = sys.stdin.read()
+# Replace sections in README using Python (write script to temp file to avoid stdin conflict)
+TMPSCRIPT=$(mktemp /tmp/update-receipts-XXXXXX.py)
+cat > "$TMPSCRIPT" << 'PYEOF'
+import re, sys, os
 
-# Replace proof receipts section
-receipts_pattern = r'(## Latest shipped proof\n\n\| Artifact.*?\n)(\n##|\Z)'
-receipts_repl = '''## Latest shipped proof
+readme_path = os.environ["README_PATH"]
+today = os.environ.get("TODAY", "")
+receipts = os.environ.get("RECEIPTS", "")
+velocity = os.environ.get("VELOCITY", "")
 
-| Artifact | What it ships | Date |
-|---|---|---|
-${RECEIPTS}
-'''
-if not re.search(receipts_pattern, readme, re.DOTALL):
-    # Section doesn't exist yet, insert after 'Today's proof receipts'
-    old_pattern = r'(## Today.s proof receipts.*?\n\nOn .*?\n\n\| Artifact.*?\n(?:\|.*?\n)*)(\n##)'
-    if re.search(old_pattern, readme, re.DOTALL):
-        readme = re.sub(old_pattern, r'\1\n## Latest shipped proof\n\n| Artifact | What it ships | Date |\n|---|---|---|\n' + RECEIPTS + r'\2', readme, flags=re.DOTALL)
+with open(readme_path) as f:
+    readme = f.read()
+
+# Replace 'Today's proof receipts' section content
+receipts_pattern = r"(## Today.s proof receipts\n\n).*?(\n<details>|\n## )"
+receipts_repl = (
+    r"\1"
+    "On " + today + " the autonomous builder loop checked recent PRs across StevenOS repos.\n\n"
+    "| Artifact | Shipped proof | Status |\n"
+    "|---|---|---|\n"
+    + receipts
+    + "\n"
+    + r"\2"
+)
+if re.search(receipts_pattern, readme, re.DOTALL):
+    readme = re.sub(receipts_pattern, receipts_repl, readme, count=1, flags=re.DOTALL)
 else:
-    readme = re.sub(receipts_pattern, receipts_repl + r'\2', readme, flags=re.DOTALL)
+    print("WARNING: Could not find Today's proof receipts section", file=sys.stderr)
 
 # Replace velocity section
-velocity_pattern = r'(## Builder Velocity\n\n\| Metric.*?\n)(\n##|\Z)'
-velocity_repl = '''## Builder Velocity
-
-''' + VELOCITY + '''
-'''
+velocity_pattern = r"(## Builder Velocity\n\n\| Metric.*?\n)(\n##|\Z)"
+velocity_repl = "## Builder Velocity\n\n" + velocity + r"\2"
 if re.search(velocity_pattern, readme, re.DOTALL):
-    readme = re.sub(velocity_pattern, velocity_repl + r'\2', readme, flags=re.DOTALL)
+    readme = re.sub(velocity_pattern, velocity_repl, readme, flags=re.DOTALL)
 else:
-    # Insert before '## Operating Principles'
-    readme = readme.replace('## Operating Principles', '## Builder Velocity\n\n' + VELOCITY + '\n## Operating Principles')
+    print("WARNING: Could not find Builder Velocity section", file=sys.stderr)
 
-# Update the date in 'Today's proof receipts' to today
-readme = re.sub(r'On \d{4}-\d{2}-\d{2} ', 'On $TODAY ', readme)
+with open(readme_path, 'w') as f:
+    f.write(readme)
+PYEOF
 
-sys.stdout.write(readme)
-" < "$README" > "${README}.tmp" && mv "${README}.tmp" "$README"
+export TODAY RECEIPTS VELOCITY README_PATH="$README"
+python3 "$TMPSCRIPT"
+rm -f "$TMPSCRIPT"
 
-echo "Updated $README with $TOTAL_PRS PRs ($TOTAL_MERGED merged, $TOTAL_OPEN open), $TOTAL_COMMITS commits across ${#REPOS[@]} repos."
+echo "Updated $README with $TOTAL_PRS PRs ($TOTAL_MERGED merged, $TOTAL_OPEN open), $TOTAL_COMMITS commits across $ACTIVE_REPOS repos."
