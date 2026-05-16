@@ -6,8 +6,6 @@
 # Requirements: gh (authenticated), bash 3.2+
 # Usage: bash scripts/update-proof-receipts.sh
 
-set -eo pipefail
-
 OWNER="stevenchouai"
 README="README.md"
 REPOS="agent-scorecard personalWebsite digital-twin knowledge-harness"
@@ -33,9 +31,15 @@ ALL_MERGED=""
 for repo in $REPOS; do
   echo "Processing $repo..."
 
-  # Get recent PRs (merged + open)
-  prs=$(gh pr list --repo "$OWNER/$repo" --state all --limit 20 \
-    --json number,title,state,mergedAt,createdAt,url 2>/dev/null || echo "[]")
+  # Get recent PRs (merged + open) — capture exit code explicitly
+  prs=""
+  if prs=$(gh pr list --repo "$OWNER/$repo" --state all --limit 20 \
+    --json number,title,state,mergedAt,createdAt,url 2>/dev/null); then
+    : # success
+  else
+    echo "  WARNING: gh pr list failed for $repo, skipping PRs"
+    prs="[]"
+  fi
 
   # Filter to last 7 days and count
   counts=$(echo "$prs" | python3 -c "
@@ -61,7 +65,7 @@ for p in prs:
 print(f'{merged}|{open_count}')
 for line in merged_lines:
     print(line)
-" 2>/dev/null || echo "0|0")
+" 2>/dev/null) || counts="0|0"
 
   # Parse counts from first line
   merged_count=$(echo "$counts" | head -1 | cut -d'|' -f1)
