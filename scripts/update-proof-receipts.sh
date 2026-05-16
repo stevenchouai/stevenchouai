@@ -6,7 +6,7 @@
 # Requirements: gh (authenticated), bash 3.2+
 # Usage: bash scripts/update-proof-receipts.sh
 
-set -euo pipefail
+set -eo pipefail
 
 OWNER="stevenchouai"
 README="README.md"
@@ -16,19 +16,23 @@ REPOS="agent-scorecard personalWebsite digital-twin knowledge-harness"
 if [ -d "repos" ]; then
   REPO_BASE="repos"
 else
-  REPO_BASE="$HOME/Projects"
+  REPO_BASE="${HOME:-/root}/Projects"
 fi
 
 TODAY=$(date +%Y-%m-%d)
-WEEK_AGO=$(date -v-7d +%Y-%m-%d 2>/dev/null || date -d "7 days ago" +%Y-%m-%d 2>/dev/null || echo "")
+WEEK_AGO=$(date -v-7d +%Y-%m-%d 2>/dev/null || date -d "7 days ago" +%Y-%m-%d 2>/dev/null || echo "1970-01-01")
+
+echo "Running update-proof-receipts.sh: TODAY=$TODAY WEEK_AGO=$WEEK_AGO REPO_BASE=$REPO_BASE"
 
 TOTAL_PRS=0
 TOTAL_MERGED=0
 TOTAL_OPEN=0
 TOTAL_COMMITS=0
-ALL_MERGED=""  # Collect all merged PRs across repos for receipt selection
+ALL_MERGED=""
 
 for repo in $REPOS; do
+  echo "Processing $repo..."
+
   # Get recent PRs (merged + open)
   prs=$(gh pr list --repo "$OWNER/$repo" --state all --limit 20 \
     --json number,title,state,mergedAt,createdAt,url 2>/dev/null || echo "[]")
@@ -75,6 +79,8 @@ for line in merged_lines:
   # Count commits in this repo (last 7 days)
   count=$(git -C "$REPO_BASE/$repo" log --oneline --since="$WEEK_AGO" 2>/dev/null | wc -l | tr -d ' ')
   TOTAL_COMMITS=$((TOTAL_COMMITS + count))
+
+  echo "  $repo: $merged_count merged, $open_count open, $count commits"
 done
 
 ACTIVE_REPOS=$(echo "$REPOS" | wc -w | tr -d ' ')
@@ -84,6 +90,9 @@ RECEIPTS=$(echo "$ALL_MERGED" | { grep -v '^$' || true; } | sort -t'|' -k3 -r | 
   [[ -z "$num" ]] && continue
   echo "| [$repo#$num]($url) | $title | Shipped |"
 done)
+
+echo "Receipts collected:"
+echo "$RECEIPTS"
 
 # Build velocity section
 VELOCITY="| Metric | Count |
@@ -123,6 +132,7 @@ receipts_repl = (
 )
 if re.search(receipts_pattern, readme, re.DOTALL):
     readme = re.sub(receipts_pattern, receipts_repl, readme, count=1, flags=re.DOTALL)
+    print("Updated proof receipts section")
 else:
     print("WARNING: Could not find Today's proof receipts section", file=sys.stderr)
 
@@ -131,15 +141,18 @@ velocity_pattern = r"(## Builder Velocity\n\n\| Metric.*?\n)(\n##|\Z)"
 velocity_repl = "## Builder Velocity\n\n" + velocity + r"\2"
 if re.search(velocity_pattern, readme, re.DOTALL):
     readme = re.sub(velocity_pattern, velocity_repl, readme, flags=re.DOTALL)
+    print("Updated velocity section")
 else:
     print("WARNING: Could not find Builder Velocity section", file=sys.stderr)
 
 with open(readme_path, 'w') as f:
     f.write(readme)
+
+print("README updated successfully")
 PYEOF
 
 export TODAY RECEIPTS VELOCITY README_PATH="$README"
 python3 "$TMPSCRIPT"
 rm -f "$TMPSCRIPT"
 
-echo "Updated $README with $TOTAL_PRS PRs ($TOTAL_MERGED merged, $TOTAL_OPEN open), $TOTAL_COMMITS commits across $ACTIVE_REPOS repos."
+echo "Done: $TOTAL_PRS PRs ($TOTAL_MERGED merged, $TOTAL_OPEN open), $TOTAL_COMMITS commits across $ACTIVE_REPOS repos."
