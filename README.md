@@ -30,11 +30,11 @@ On 2026-05-16 the autonomous builder loop checked recent PRs across StevenOS rep
 
 | Artifact | Shipped proof | Status |
 |---|---|---|
-| [personalWebsite#29](https://github.com/stevenchouai/personalWebsite/pull/29) | feat: add /proof-chain/contributions with verifiable open source activity | Shipped |
 | [agent-scorecard#7](https://github.com/stevenchouai/agent-scorecard/pull/7) | feat: add interactive scoring dimensions explainer | Shipped |
-| [personalWebsite#28](https://github.com/stevenchouai/personalWebsite/pull/28) | feat: add /proof-chain/system-map with interactive architecture diagram | Shipped |
-| [personalWebsite#27](https://github.com/stevenchouai/personalWebsite/pull/27) | feat: add /proof-chain/shipped page with verifiable weekly receipts | Shipped |
 | [agent-scorecard#6](https://github.com/stevenchouai/agent-scorecard/pull/6) | feat: add evidence intake checklist | Shipped |
+| [digital-twin#16](https://github.com/stevenchouai/digital-twin/pull/16) | docs: add change classification gate | Shipped |
+| [knowledge-harness#10](https://github.com/stevenchouai/knowledge-harness/pull/10) | fix: keep prompt command read-only | Shipped |
+| [knowledge-harness#9](https://github.com/stevenchouai/knowledge-harness/pull/9) | feat: add doctor json output | Shipped |
 
 <details>
 <summary>Previous receipts (2026-05-13)</summary>
@@ -51,10 +51,10 @@ On 2026-05-16 the autonomous builder loop checked recent PRs across StevenOS rep
 
 | Metric | Count |
 |---|---|
-| PRs this week | 32 |
-| Merged | 32 |
+| PRs this week | 22 |
+| Merged | 22 |
 | Open (pending review) | 0 |
-| Commits (7d) | 49 |
+| Commits (7d) | 27 |
 | Active repos | 4 |
 
 *Last auto-update: 2026-05-16*
