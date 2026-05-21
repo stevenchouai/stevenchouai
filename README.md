@@ -26,15 +26,11 @@ If you only have a minute, click these in order:
 
 ## Today's proof receipts
 
-On 2026-05-20 the autonomous builder loop checked recent PRs across StevenOS repos.
+On 2026-05-21 the autonomous builder loop checked recent PRs across StevenOS repos.
 
 | Artifact | Shipped proof | Status |
 |---|---|---|
 | [agent-scorecard#8](https://github.com/stevenchouai/agent-scorecard/pull/8) | docs: add scoring anatomy to README quick-start surface | Shipped |
-| [agent-scorecard#7](https://github.com/stevenchouai/agent-scorecard/pull/7) | feat: add interactive scoring dimensions explainer | Shipped |
-| [agent-scorecard#6](https://github.com/stevenchouai/agent-scorecard/pull/6) | feat: add evidence intake checklist | Shipped |
-| [digital-twin#16](https://github.com/stevenchouai/digital-twin/pull/16) | docs: add change classification gate | Shipped |
-| [knowledge-harness#10](https://github.com/stevenchouai/knowledge-harness/pull/10) | fix: keep prompt command read-only | Shipped |
 
 <details>
 <summary>Previous receipts (2026-05-13)</summary>
@@ -51,13 +47,13 @@ On 2026-05-20 the autonomous builder loop checked recent PRs across StevenOS rep
 
 | Metric | Count |
 |---|---|
-| PRs this week | 5 |
-| Merged | 5 |
+| PRs this week | 1 |
+| Merged | 1 |
 | Open (pending review) | 0 |
 | Commits (7d) | 24 |
 | Active repos | 4 |
 
-*Last auto-update: 2026-05-20*
+*Last auto-update: 2026-05-21*
 
 ## Why Stay Here
 
