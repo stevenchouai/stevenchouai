@@ -26,11 +26,11 @@ If you only have a minute, click these in order:
 
 ## Today's proof receipts
 
-On 2026-05-22 the autonomous builder loop checked recent PRs across StevenOS repos.
+On 2026-05-24 the autonomous builder loop checked recent PRs across StevenOS repos.
 
 | Artifact | Shipped proof | Status |
 |---|---|---|
-| [agent-scorecard#8](https://github.com/stevenchouai/agent-scorecard/pull/8) | docs: add scoring anatomy to README quick-start surface | Shipped |
+
 
 <details>
 <summary>Previous receipts (2026-05-13)</summary>
@@ -47,13 +47,13 @@ On 2026-05-22 the autonomous builder loop checked recent PRs across StevenOS rep
 
 | Metric | Count |
 |---|---|
-| PRs this week | 1 |
-| Merged | 1 |
+| PRs this week | 0 |
+| Merged | 0 |
 | Open (pending review) | 0 |
-| Commits (7d) | 24 |
+| Commits (7d) | 0 |
 | Active repos | 4 |
 
-*Last auto-update: 2026-05-22*
+*Last auto-update: 2026-05-24*
 
 ## Why Stay Here
 
