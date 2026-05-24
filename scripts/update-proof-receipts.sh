@@ -31,41 +31,41 @@ ALL_MERGED=""
 for repo in $REPOS; do
   echo "Processing $repo..."
 
-  # Get recent PRs (merged + open) — capture exit code explicitly
-  prs=""
-  if prs=$(gh pr list --repo "$OWNER/$repo" --state all --limit 20 \
-    --json number,title,state,mergedAt,createdAt,url 2>/dev/null); then
-    : # success
-  else
-    echo "  WARNING: gh pr list failed for $repo, skipping PRs"
-    prs="[]"
-  fi
-
   # Filter to last 7 days and count
-  counts=$(echo "$prs" | python3 -c "
-import json, sys
+  counts=$(python3 -c "
+import json, sys, urllib.request
 from datetime import datetime, timedelta
-prs = json.load(sys.stdin)
+repo = sys.argv[1]
+owner = sys.argv[2]
 cutoff = datetime.utcnow() - timedelta(days=7)
 merged = 0
 open_count = 0
 merged_lines = []
+try:
+    req = urllib.request.Request(
+        f'https://api.github.com/repos/{owner}/{repo}/pulls?state=all&per_page=20',
+        headers={'User-Agent': 'Mozilla/5.0'}
+    )
+    with urllib.request.urlopen(req) as response:
+        prs = json.loads(response.read().decode())
+except Exception as e:
+    prs = []
 for p in prs:
-    created = p.get('createdAt', '')
+    created = p.get('created_at', '')
     if created:
         try:
             dt = datetime.fromisoformat(created.replace('Z', '+00:00')).replace(tzinfo=None)
             if dt >= cutoff:
-                if p.get('mergedAt'):
+                if p.get('merged_at'):
                     merged += 1
-                    merged_lines.append(f\"{p['number']}|{p['createdAt']}|{p['title']}|{p['url']}\")
+                    merged_lines.append(f\"{p['number']}|{p['created_at']}|{p['title']}|{p['html_url']}\")
                 elif p['state'].lower() == 'open':
                     open_count += 1
         except: pass
 print(f'{merged}|{open_count}')
 for line in merged_lines:
     print(line)
-" 2>/dev/null) || counts="0|0"
+" "$repo" "$OWNER" 2>/dev/null) || counts="0|0"
 
   # Parse counts from first line
   merged_count=$(echo "$counts" | head -1 | cut -d'|' -f1)

@@ -21,27 +21,10 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install GitHub CLI
-        run: |
-          (type -p wget >/dev/null || (sudo apt-get update && sudo apt-get install wget -y)) \
-          && sudo mkdir -p -m 755 /etc/apt/keyrings \
-          && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
-          && cat $out | sudo tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
-          && sudo chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
-          && echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | sudo tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
-          && sudo apt-get update && sudo apt-get install gh -y
-
-      - name: Authenticate
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh auth status
-
       - name: Clone sibling repos (read-only)
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           for repo in agent-scorecard personalWebsite digital-twin knowledge-harness; do
-            gh repo clone "stevenchouai/$repo" "repos/$repo" -- --depth=10 || true
+            git clone "https://github.com/stevenchouai/$repo.git" "repos/$repo" --depth=10 || true
           done
 
       - name: Update README
