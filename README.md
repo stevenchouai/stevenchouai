@@ -26,7 +26,7 @@ If you only have a minute, click these in order:
 
 ## Today's proof receipts
 
-On 2026-05-24 the autonomous builder loop checked recent PRs across StevenOS repos.
+On 2026-05-25 the autonomous builder loop checked recent PRs across StevenOS repos.
 
 | Artifact | Shipped proof | Status |
 |---|---|---|
@@ -53,7 +53,7 @@ On 2026-05-24 the autonomous builder loop checked recent PRs across StevenOS rep
 | Commits (7d) | 0 |
 | Active repos | 4 |
 
-*Last auto-update: 2026-05-24*
+*Last auto-update: 2026-05-25*
 
 ## Why Stay Here
 
