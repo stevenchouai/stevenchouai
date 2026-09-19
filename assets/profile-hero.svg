@@ -1,36 +1,119 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="440" viewBox="0 0 1200 440" role="img">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#111827"/></linearGradient>
-    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.6"/></pattern>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22d3ee"/></marker>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08090e"/>
+      <stop offset="50%" stop-color="#0e111a"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <linearGradient id="accent-cyan" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#818cf8"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141926" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#0d111a" stop-opacity="0.9"/>
+    </linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="0.75" stroke-opacity="0.6"/>
+    </pattern>
+    <filter id="glow-cyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="60" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
     <style>
-      text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; fill: #e5e7eb; }
-      .muted { fill: #94a3b8; font-size: 18px; }
-      .tiny { fill: #94a3b8; font-size: 13px; }
-      .title { fill: #f8fafc; font-size: 42px; font-weight: 800; letter-spacing: -1px; }
-      .section { fill: #f8fafc; font-size: 20px; font-weight: 700; }
-      .label { fill: #f8fafc; font-size: 16px; font-weight: 700; }
-      .box { fill: #0f172a; stroke: #334155; stroke-width: 1.3; rx: 14; }
-      .accent { stroke: #22d3ee; } .violet { stroke: #a78bfa; } .green { stroke: #34d399; } .amber { stroke: #fbbf24; } .rose { stroke: #fb7185; }
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .title { fill: #f8fafc; font-size: 38px; font-weight: 800; letter-spacing: -0.8px; }
+      .badge { fill: #38bdf8; font-size: 11px; font-weight: 700; letter-spacing: 2px; }
+      .motto { fill: #94a3b8; font-size: 17px; font-weight: 500; font-style: italic; }
+      .card-title { fill: #f1f5f9; font-size: 17px; font-weight: 700; }
+      .card-desc { fill: #94a3b8; font-size: 12.5px; font-weight: 400; line-height: 18px; }
+      .card-tag { fill: #64748b; font-size: 11px; font-weight: 600; }
+      .stat-val { fill: #38bdf8; font-size: 20px; font-weight: 800; }
+      .stat-lbl { fill: #64748b; font-size: 10px; font-weight: 600; letter-spacing: 0.5px; }
     </style>
   </defs>
 
-  <rect width="1200" height="420" fill="url(#bg)"/>
-  <rect width="1200" height="420" fill="url(#grid)" opacity="0.8"/>
-  <circle cx="1030" cy="80" r="150" fill="#22d3ee" opacity="0.06"/>
-  <circle cx="900" cy="330" r="220" fill="#8b5cf6" opacity="0.08"/>
-  <text x="64" y="92" class="title">Steven Chou</text>
-  <text x="66" y="132" class="muted">Personal AI Operating System · memory → agents → evals → proof</text>
-  <rect x="64" y="178" width="244" height="116" class="box accent"/>
-  <text x="88" y="218" class="section">Knowledge</text><text x="88" y="250" class="tiny">Obsidian · harness · context</text>
-  <rect x="344" y="178" width="244" height="116" class="box violet"/>
-  <text x="368" y="218" class="section">Identity</text><text x="368" y="250" class="tiny">digital twin · style · judgment</text>
-  <rect x="624" y="178" width="244" height="116" class="box green"/>
-  <text x="648" y="218" class="section">Agents</text><text x="648" y="250" class="tiny">Hermes · OpenClaw · tools</text>
-  <rect x="904" y="178" width="244" height="116" class="box amber"/>
-  <text x="928" y="218" class="section">Proof</text><text x="928" y="250" class="tiny">scorecard · website · resume</text>
-  <path d="M308 236 H336" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/><path d="M588 236 H616" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/><path d="M868 236 H896" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="66" y="352" class="muted">Not a project shelf. A coherent builder entity: inputs become memory, memory becomes agents, agents produce verified public proof.</text>
+  <!-- Background -->
+  <rect width="1200" height="440" fill="url(#bg)"/>
+  <rect width="1200" height="440" fill="url(#grid)"/>
+
+  <!-- Ambient Glow Orbs -->
+  <circle cx="200" cy="80" r="140" fill="#38bdf8" opacity="0.07" filter="url(#glow-cyan)"/>
+  <circle cx="1050" cy="360" r="180" fill="#818cf8" opacity="0.08" filter="url(#glow-cyan)"/>
+  <circle cx="600" cy="220" r="160" fill="#10b981" opacity="0.05" filter="url(#glow-cyan)"/>
+
+  <!-- Top Badge -->
+  <rect x="64" y="42" width="220" height="26" rx="13" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <circle cx="78" cy="55" r="4" fill="#10b981"/>
+  <text x="90" y="59" class="mono badge">STEVEN CHOU · OS</text>
+
+  <!-- Main Hero Title -->
+  <text x="64" y="104" class="title">Steven Chou</text>
+  <text x="64" y="132" class="mono" fill="#cbd5e1" font-size="14.5" font-weight="600">Full-Stack Quality Engineer · Systems Builder · Aspiring Digital Nomad</text>
+  <text x="64" y="162" class="motto">&ldquo;Engineering systems with rigor. Living life with intention.&rdquo;</text>
+
+  <!-- 4 Architecture & Life Pillars -->
+  <!-- Card 1: Payment Rails -->
+  <g transform="translate(64, 200)">
+    <rect width="254" height="196" rx="16" fill="url(#card-grad)" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="254" height="3" rx="1.5" fill="#38bdf8"/>
+    <circle cx="24" cy="28" r="8" fill="#0284c7" opacity="0.2"/>
+    <circle cx="24" cy="28" r="4" fill="#38bdf8"/>
+    <text x="42" y="33" class="card-title">Payment Rails</text>
+    <text x="20" y="66" class="card-desc">High-concurrency clearing &amp;</text>
+    <text x="20" y="86" class="card-desc">financial transaction reliability.</text>
+    <text x="20" y="106" class="card-desc">Zero P0/P1 production defect</text>
+    <text x="20" y="126" class="card-desc">discipline across core corridors.</text>
+    <line x1="20" y1="148" x2="234" y2="148" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="174" class="mono card-tag">FINTECH · RELIABILITY</text>
+  </g>
+
+  <!-- Card 2: Full-Stack Craft -->
+  <g transform="translate(338, 200)">
+    <rect width="254" height="196" rx="16" fill="url(#card-grad)" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="254" height="3" rx="1.5" fill="#10b981"/>
+    <circle cx="24" cy="28" r="8" fill="#059669" opacity="0.2"/>
+    <circle cx="24" cy="28" r="4" fill="#10b981"/>
+    <text x="42" y="33" class="card-title">Full-Stack Craft</text>
+    <text x="20" y="66" class="card-desc">Eliminating walls between QA</text>
+    <text x="20" y="86" class="card-desc">&amp; development. Writing code,</text>
+    <text x="20" y="106" class="card-desc">building specialized test tools,</text>
+    <text x="20" y="126" class="card-desc">and owning runtime quality.</text>
+    <line x1="20" y1="148" x2="234" y2="148" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="174" class="mono card-tag">CODE · INFRA · VERIFY</text>
+  </g>
+
+  <!-- Card 3: AI-Native Systems -->
+  <g transform="translate(612, 200)">
+    <rect width="254" height="196" rx="16" fill="url(#card-grad)" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="254" height="3" rx="1.5" fill="#818cf8"/>
+    <circle cx="24" cy="28" r="8" fill="#6366f1" opacity="0.2"/>
+    <circle cx="24" cy="28" r="4" fill="#818cf8"/>
+    <text x="42" y="33" class="card-title">AI Agent OS</text>
+    <text x="20" y="66" class="card-desc">Autonomous evaluation CLI</text>
+    <text x="20" y="86" class="card-desc">(Agent Scorecard), Digital Twin</text>
+    <text x="20" y="106" class="card-desc">knowledge loops, and upstream</text>
+    <text x="20" y="126" class="card-desc">OpenClaw infrastructure.</text>
+    <line x1="20" y1="148" x2="234" y2="148" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="174" class="mono card-tag">EVAL · AGENTS · TOOLS</text>
+  </g>
+
+  <!-- Card 4: Life & Nomadism -->
+  <g transform="translate(886, 200)">
+    <rect width="250" height="196" rx="16" fill="url(#card-grad)" stroke="#1e293b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="250" height="3" rx="1.5" fill="#f59e0b"/>
+    <circle cx="24" cy="28" r="8" fill="#d97706" opacity="0.2"/>
+    <circle cx="24" cy="28" r="4" fill="#f59e0b"/>
+    <text x="42" y="33" class="card-title">Living Intentionally</text>
+    <text x="20" y="66" class="card-desc">Disciplined strength fitness</text>
+    <text x="20" y="86" class="card-desc">(lean athletic physique),</text>
+    <text x="20" y="106" class="card-desc">mental agency, and geographic</text>
+    <text x="20" y="126" class="card-desc">freedom as a digital nomad.</text>
+    <line x1="20" y1="148" x2="230" y2="148" stroke="#1e293b" stroke-width="1"/>
+    <text x="20" y="174" class="mono card-tag">FITNESS · NOMAD · AGENCY</text>
+  </g>
 </svg>

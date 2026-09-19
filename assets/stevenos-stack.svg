@@ -1,40 +1,97 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="700" viewBox="0 0 1200 700" role="img">
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="660" viewBox="0 0 1200 660" role="img">
   <defs>
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#020617"/><stop offset="1" stop-color="#111827"/></linearGradient>
-    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#22d3ee"/><stop offset="1" stop-color="#8b5cf6"/></linearGradient>
-    <filter id="glow"><feGaussianBlur stdDeviation="3" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1e293b" stroke-width="0.6"/></pattern>
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#22d3ee"/></marker>
+    <linearGradient id="bg-stack" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08090e"/>
+      <stop offset="50%" stop-color="#0e111a"/>
+      <stop offset="100%" stop-color="#07080c"/>
+    </linearGradient>
+    <linearGradient id="layer-card" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#141926" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#0d111a" stop-opacity="0.95"/>
+    </linearGradient>
+    <pattern id="grid-stack" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1f293d" stroke-width="0.7" stroke-opacity="0.6"/>
+    </pattern>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <polygon points="0,1 7,4 0,7" fill="#38bdf8"/>
+    </marker>
     <style>
-      text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; fill: #e5e7eb; }
-      .muted { fill: #94a3b8; font-size: 18px; }
-      .tiny { fill: #94a3b8; font-size: 13px; }
-      .title { fill: #f8fafc; font-size: 42px; font-weight: 800; letter-spacing: -1px; }
-      .section { fill: #f8fafc; font-size: 20px; font-weight: 700; }
-      .label { fill: #f8fafc; font-size: 16px; font-weight: 700; }
-      .box { fill: #0f172a; stroke: #334155; stroke-width: 1.3; rx: 14; }
-      .accent { stroke: #22d3ee; } .violet { stroke: #a78bfa; } .green { stroke: #34d399; } .amber { stroke: #fbbf24; } .rose { stroke: #fb7185; }
+      text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+      .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+      .title { fill: #f8fafc; font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+      .subtitle { fill: #94a3b8; font-size: 14.5px; }
+      .layer-title { fill: #f1f5f9; font-size: 17px; font-weight: 700; }
+      .layer-detail { fill: #94a3b8; font-size: 13px; font-weight: 400; }
+      .badge-text { fill: #0284c7; font-size: 11px; font-weight: 700; }
     </style>
   </defs>
 
-  <rect width="1200" height="700" fill="url(#bg)"/><rect width="1200" height="700" fill="url(#grid)" opacity="0.75"/>
-  <text x="60" y="70" class="title">StevenOS repository stack</text><text x="62" y="108" class="muted">Each layer has an upstream source, a local execution role, and downstream public proof.</text>
-  <rect x="170" y="90" width="860" height="64" rx="16" fill="#0f172a" stroke="#fbbf24" stroke-width="1.8"/>
-  <text x="205" y="117" class="section">Public proof</text><text x="205" y="141" class="tiny">personalWebsite · GitHub profile · resume — turns artifacts into opportunity surface</text>
-  <rect x="170" y="180" width="860" height="64" rx="16" fill="#0f172a" stroke="#fb7185" stroke-width="1.8"/>
-  <text x="205" y="207" class="section">Evaluation</text><text x="205" y="231" class="tiny">agent-scorecard — decides whether agents deserve more autonomy</text>
-  <rect x="170" y="270" width="860" height="64" rx="16" fill="#0f172a" stroke="#34d399" stroke-width="1.8"/>
-  <text x="205" y="297" class="section">Model + tool infra</text><text x="205" y="321" class="tiny">CLIProxyAPI · Hermes tools — normalizes access, tools, and side effects</text>
-  <rect x="170" y="360" width="860" height="64" rx="16" fill="#0f172a" stroke="#22d3ee" stroke-width="1.8"/>
-  <text x="205" y="387" class="section">Agent runtime</text><text x="205" y="411" class="tiny">Hermes · OpenClaw — executes across chats, repos, devices, and workflows</text>
-  <rect x="170" y="450" width="860" height="64" rx="16" fill="#0f172a" stroke="#a78bfa" stroke-width="1.8"/>
-  <text x="205" y="477" class="section">Identity layer</text><text x="205" y="501" class="tiny">digital-twin — preserves judgment, style, preference, and process</text>
-  <rect x="170" y="540" width="860" height="64" rx="16" fill="#0f172a" stroke="#38bdf8" stroke-width="1.8"/>
-  <text x="205" y="567" class="section">Memory layer</text><text x="205" y="591" class="tiny">Obsidian · knowledge-harness — keeps raw inputs, compiled knowledge, and retrieval paths</text>
-  <path d="M600 164 V188" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M600 254 V278" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M600 344 V368" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M600 434 V458" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <path d="M600 524 V548" stroke="#22d3ee" stroke-width="2" marker-end="url(#arrow)"/>
-  <text x="455" y="660" class="muted">Inputs compound upward into verified public outputs.</text>
+  <rect width="1200" height="660" fill="url(#bg-stack)"/>
+  <rect width="1200" height="660" fill="url(#grid-stack)"/>
+
+  <!-- Header -->
+  <text x="70" y="58" class="title">StevenOS Architecture Stack</text>
+  <text x="70" y="86" class="subtitle">An integrated builder operating model: grounding real-world execution, autonomous agents, and life mastery.</text>
+
+  <!-- Layer 1: Public Proof & Narrative -->
+  <g transform="translate(70, 115)">
+    <rect width="1060" height="80" rx="14" fill="url(#layer-card)" stroke="#f59e0b" stroke-width="1.2"/>
+    <rect x="0" y="0" width="6" height="80" rx="3" fill="#f59e0b"/>
+    <text x="32" y="36" class="layer-title">Layer 05 · Public Proof &amp; Conversion Plane</text>
+    <text x="32" y="60" class="layer-detail">stevenchouai.github.io · /now · /future · /experience · /proof-chain — turns verified engineering artifacts into public authority</text>
+    <rect x="910" y="26" width="120" height="28" rx="8" fill="#f59e0b" fill-opacity="0.15" stroke="#f59e0b" stroke-width="1"/>
+    <text x="970" y="44" text-anchor="middle" class="mono" fill="#f59e0b" font-size="11" font-weight="700">PUBLIC SURFACE</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="195" x2="600" y2="215" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 2: Financial Systems & Reliability Core -->
+  <g transform="translate(70, 220)">
+    <rect width="1060" height="80" rx="14" fill="url(#layer-card)" stroke="#38bdf8" stroke-width="1.2"/>
+    <rect x="0" y="0" width="6" height="80" rx="3" fill="#38bdf8"/>
+    <text x="32" y="36" class="layer-title">Layer 04 · Financial Rails &amp; High-Reliability Core</text>
+    <text x="32" y="60" class="layer-detail">Leading Global Fintech Platform — high-throughput payment rails, clearing gateways, distributed transaction consistency &amp; zero-defect SLA</text>
+    <rect x="910" y="26" width="120" height="28" rx="8" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+    <text x="970" y="44" text-anchor="middle" class="mono" fill="#38bdf8" font-size="11" font-weight="700">PRODUCTION CORE</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="300" x2="600" y2="320" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 3: AI Agent Evaluation & Tooling -->
+  <g transform="translate(70, 325)">
+    <rect width="1060" height="80" rx="14" fill="url(#layer-card)" stroke="#818cf8" stroke-width="1.2"/>
+    <rect x="0" y="0" width="6" height="80" rx="3" fill="#818cf8"/>
+    <text x="32" y="36" class="layer-title">Layer 03 · AI Agent Evaluation &amp; Runtime Tooling</text>
+    <text x="32" y="60" class="layer-detail">agent-scorecard · OpenClaw infrastructure — trace-first quality gates, autonomous verify loops, deterministic evaluation before permissions</text>
+    <rect x="910" y="26" width="120" height="28" rx="8" fill="#818cf8" fill-opacity="0.15" stroke="#818cf8" stroke-width="1"/>
+    <text x="970" y="44" text-anchor="middle" class="mono" fill="#818cf8" font-size="11" font-weight="700">AI RUNTIME</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="405" x2="600" y2="425" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 4: Digital Twin & Memory -->
+  <g transform="translate(70, 430)">
+    <rect width="1060" height="80" rx="14" fill="url(#layer-card)" stroke="#10b981" stroke-width="1.2"/>
+    <rect x="0" y="0" width="6" height="80" rx="3" fill="#10b981"/>
+    <text x="32" y="36" class="layer-title">Layer 02 · Digital Twin &amp; Memory Synthesis</text>
+    <text x="32" y="60" class="layer-detail">digital-twin · Obsidian Knowledge Base — personal memory wiki, cognitive reflection logs, explicit agent judgment &amp; operating context</text>
+    <rect x="910" y="26" width="120" height="28" rx="8" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1"/>
+    <text x="970" y="44" text-anchor="middle" class="mono" fill="#10b981" font-size="11" font-weight="700">KNOWLEDGE OS</text>
+  </g>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="510" x2="600" y2="530" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Layer 5: Self-Mastery & Physical Vitality -->
+  <g transform="translate(70, 535)">
+    <rect width="1060" height="80" rx="14" fill="url(#layer-card)" stroke="#ec4899" stroke-width="1.2"/>
+    <rect x="0" y="0" width="6" height="80" rx="3" fill="#ec4899"/>
+    <text x="32" y="36" class="layer-title">Layer 01 · Physical Vitality &amp; Digital Nomad Agency</text>
+    <text x="32" y="60" class="layer-detail">Disciplined strength fitness (lean athletic physique), mental clarity, intentional living, and geographic freedom across global hubs</text>
+    <rect x="910" y="26" width="120" height="28" rx="8" fill="#ec4899" fill-opacity="0.15" stroke="#ec4899" stroke-width="1"/>
+    <text x="970" y="44" text-anchor="middle" class="mono" fill="#ec4899" font-size="11" font-weight="700">LIFE FOUNDATION</text>
+  </g>
 </svg>
