@@ -25,7 +25,7 @@
   <rect x="90" y="260" width="170" height="122" class="box accent"/>
   <text x="108" y="292" class="tiny">01</text><text x="108" y="320" class="label">Need durable memory</text><text x="108" y="346" class="tiny">knowledge-harness</text><text x="108" y="368" class="desc">routes agents via KB</text>
   <rect x="315" y="360" width="170" height="122" class="box violet"/>
-  <text x="333" y="392" class="tiny">02</text><text x="333" y="420" class="label">Encode judgment</text><text x="333" y="446" class="tiny">digital-twin</text><text x="333" y="468" class="desc">identity & style</text>
+  <text x="333" y="392" class="tiny">02</text><text x="333" y="420" class="label">Encode judgment</text><text x="333" y="446" class="tiny">digital-twin</text><text x="333" y="468" class="desc">identity &amp; style</text>
   <rect x="540" y="250" width="170" height="122" class="box green"/>
   <text x="558" y="282" class="tiny">03</text><text x="558" y="310" class="label">Run real agents</text><text x="558" y="336" class="tiny">Hermes / OpenClaw</text><text x="558" y="358" class="desc">msg + tools + devices</text>
   <rect x="765" y="360" width="170" height="122" class="box amber"/>

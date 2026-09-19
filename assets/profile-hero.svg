@@ -54,7 +54,7 @@
   <!-- Main Hero Title -->
   <text x="64" y="104" class="title">Steven Chou</text>
   <text x="64" y="132" class="mono" fill="#cbd5e1" font-size="14.5" font-weight="600">Full-Stack Quality Engineer · Systems Builder · Aspiring Digital Nomad</text>
-  <text x="64" y="162" class="motto">&ldquo;Engineering systems with rigor. Living life with intention.&rdquo;</text>
+  <text x="64" y="162" class="motto">&quot;Engineering systems with rigor. Living life with intention.&quot;</text>
 
   <!-- 4 Architecture & Life Pillars -->
   <!-- Card 1: Payment Rails -->
